@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://areksroczyk.com/sitemap.xml

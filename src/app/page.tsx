@@ -1,65 +1,100 @@
-import Image from "next/image";
+import Image from 'next/image'
+import avatarImg from '@/assets/images/avatar-real.png'
+import XTwitterIcon from '@/assets/icons/socials/x-twitter'
+import { ArrowUpRight } from 'lucide-react'
+import LinkedinIcon from '@/assets/icons/socials/linkedin'
+import { linkedInUrl, xTwitterUrl } from '@/content/constants'
+import WorkCard from '@/components/work-card'
+import { workItems } from '@/content/work'
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+	return (
+		<section className='px-4 sm:px-6 '>
+			<div className='grid grid-cols-2 sm:grid-cols-[1fr_1fr_2fr] gap-3 max-w-3xl mx-auto'>
+				<div className='bg-primary relative col-span-2 sm:col-span-3 rounded-3xl px-4 py-6 sm:p-10 w-full'>
+					<div className='px-4 py-1.5 rounded-t-xl bg-primary absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-2'>
+						<div className='bg-green relative rounded-full size-2'>
+							<div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-2.5 animate-ping rounded-full bg-green/25'></div>
+						</div>
+						<div className='uppercase font-mono whitespace-nowrap  tracking-wider font-medium text-white/25 text-[11px] sm:text-xs'>
+							Building{' '}
+							<a
+								href='https://jakaszkola.pl/'
+								className='hover:text-white/50 transition-colors'
+								target='_blank'
+								rel='nofollow noopenner norefferer'
+							>
+								jakaszkola.pl
+							</a>
+						</div>
+					</div>
+
+					<figure className='flex flex-col items-center mb-3'>
+						<Image
+							src={avatarImg}
+							priority={true}
+							className='size-24 md:size-28 rounded-full mb-3'
+							alt='Arkadiusz Sroczyk, Arek Sroczyk, Front-end Developer, Engineer, Full-stack Developer, Software Engineer'
+						/>
+
+						<figcaption className='uppercase font-mono px-3 rounded-full py-0.5 tracking-widest text-white/50 text-xs'>
+							Arek Sroczyk
+						</figcaption>
+					</figure>
+
+					<h1 className='text-center text-balance sm:text-4xl md:text-[40px] leading-tight text-3xl font-semibold tracking-[-0.04em] mb-3'>
+						Developer. Engineer. Full-time Builder 🚀
+					</h1>
+					<p className='text-white/75 max-w-[40ch] mx-auto text-balance text-center text-[15px] sm:text-base'>
+						I build software products people love and help brands get more leads. And help brands
+						get more leads.
+					</p>
+				</div>
+
+				<a
+					href={xTwitterUrl}
+					target='_blank'
+					aria-label='Arek Sroczyk X social account'
+					rel='nofollow noopener noreferrer'
+					className='aspect-square flex items-center outline-2 outline-primary hover:outline-primary-800 active:scale-[0.98] transition-[transform_outline-color] active:outline-primary-800 justify-center rounded-3xl bg-primary relative group'
+				>
+					<div className='bg-black p-3 rounded-xl '>
+						<XTwitterIcon className='size-8' />
+					</div>
+
+					<button className='absolute left-3 transition-transform sm:col-span-1 ease-fast-in-slow-out duration-300 group-hover:scale-110 bottom-3 rounded-full bg-primary-800 p-2'>
+						<div className='relative overflow-hidden'>
+							<ArrowUpRight className='size-5 group-hover:scale-75 transition-transform ease-fast-in-slow-out duration-400 group-hover:-translate-y-full group-hover:translate-x-full' />
+							<ArrowUpRight className='size-5 transition-transform ease-fast-in-slow-out absolute group-hover:translate-0 top-0 left-0 -translate-x-full translate-y-full duration-400' />
+						</div>
+					</button>
+				</a>
+
+				<a
+					href={linkedInUrl}
+					target='_blank'
+					rel='nofollow noopener noreferrer'
+					aria-label='Arek Sroczyk LinkedIn account'
+					className='aspect-square flex items-center outline-2 sm:col-span-1 active:outline-primary-800 outline-primary hover:outline-primary-800 active:scale-[0.98] transition-[transform_outline-color] justify-center rounded-3xl bg-primary relative group'
+				>
+					<div className='bg-[#0E76A8] p-3 rounded-xl '>
+						<LinkedinIcon className='size-8' />
+					</div>
+
+					<button className='absolute left-3 transition-transform ease-fast-in-slow-out duration-300 group-hover:scale-110 bottom-3 rounded-full bg-primary-800 p-2'>
+						<div className='relative overflow-hidden'>
+							<ArrowUpRight className='size-5 group-hover:scale-75 transition-transform ease-fast-in-slow-out duration-400 group-hover:-translate-y-full group-hover:translate-x-full' />
+							<ArrowUpRight className='size-5 transition-transform ease-fast-in-slow-out absolute group-hover:translate-0 top-0 left-0 -translate-x-full translate-y-full duration-400' />
+						</div>
+					</button>
+				</a>
+
+				<div className='rounded-3xl bg-primary col-span-2 sm:col-span-1 p-4'></div>
+
+				{workItems.map((item) => (
+					<WorkCard key={item.id} item={item} className='col-span-2 sm:col-span-3' />
+				))}
+			</div>
+		</section>
+	)
 }
