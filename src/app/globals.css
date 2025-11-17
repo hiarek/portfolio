@@ -22,17 +22,8 @@
 
 	/* Animations */
 	--animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
-	@keyframes marquee {
-		0% {
-			transform: translateX(0%);
-		}
-		100% {
-			transform: translateX(-100%);
-		}
-	}
-
 	--animate-fade-in: fade-in 0.9s 0.1s ease both;
-	--animate-fade-in-delay: fade-in 0.9s 0.3s ease both;
+
 	@keyframes fade-in {
 		0% {
 			opacity: 0;
@@ -43,6 +34,15 @@
 			opacity: 1;
 			filter: blur(0);
 			transform: translateY(0);
+		}
+	}
+
+	@keyframes marquee {
+		0% {
+			transform: translateX(0%);
+		}
+		100% {
+			transform: translateX(-100%);
 		}
 	}
 }
