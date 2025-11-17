@@ -11,8 +11,9 @@ import jakaszkolaMockupImg from '@/assets/images/work/jakaszkola-mockup.jpg'
 import leanStartupBookImg from '@/assets/images/recent-read.jpg'
 import AnimatedArrowButton from '@/components/ui/button/animated-arrow-button'
 import { technologiesByCategory } from '@/content/technologies'
+import MapBox from '@/components/mapbox'
 import InstagramIcon from '@/assets/icons/socials/instagram'
-import LazyMapBox from '@/components/lazy-mapbox'
+import { Suspense } from 'react'
 
 export default function Home() {
 	return (
@@ -64,7 +65,20 @@ export default function Home() {
 
 					{/* Mapbox */}
 					<div className='rounded-3xl lg:aspect-square overflow-hidden bg-primary relative bento-map'>
-						<LazyMapBox />
+						<Suspense
+							fallback={
+								<div className='w-full h-full flex items-center justify-center animate-in fade-in duration-700'>
+									<div className='flex flex-col items-center gap-3'>
+										<div className='size-16 rounded-full border-2 border-white/20 border-t-white/80 animate-spin' />
+										<p className='text-white/50 text-sm font-mono uppercase tracking-wider'>
+											Loading map...
+										</p>
+									</div>
+								</div>
+							}
+						>
+							<MapBox />
+						</Suspense>
 					</div>
 
 					{/* Recent read */}
