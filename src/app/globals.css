@@ -13,12 +13,123 @@
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
 
+	/* Font sizes */
+	--text-15: 0.9375rem;
+
 	/* Easings */
 	--ease-fast-in-slow-out: cubic-bezier(0.22, 0.68, 0, 1);
+	--ease-in-out-quart: cubic-bezier(0.77, 0, 0.18, 1);
+
+	/* Animations */
+	--animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+	@keyframes marquee {
+		0% {
+			transform: translateX(0%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+
+	--animate-fade-in: fade-in 0.9s 0.1s ease both;
+	--animate-fade-in-delay: fade-in 0.9s 0.3s ease both;
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+			filter: blur(4px);
+			transform: translateY(10px);
+		}
+		100% {
+			opacity: 1;
+			filter: blur(0);
+			transform: translateY(0);
+		}
+	}
+}
+
+/* globals.css */
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+	pointer-events: none;
 }
 
 body {
 	background: var(--color-background);
 	color: var(--color-white);
 	font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+	@apply grid grid-cols-6 gap-4 max-w-5xl mx-auto;
+
+	grid-template-areas:
+		'hero hero hero hero hero hero'
+		'map map map read read read'
+		'twitter twitter linkedin linkedin instagram instagram'
+		'project project project project project project';
+
+	@variant md {
+		grid-template-areas:
+			'hero hero hero hero hero hero'
+			'map map twitter twitter read read'
+			'project project project project read read'
+			'instagram instagram linkedin linkedin empty empty';
+	}
+
+	@variant lg {
+		grid-template-areas:
+			'twitter hero hero hero hero read'
+			'instagram hero hero hero hero read'
+			'map map linkedin project project project'
+			'map map empty project project project';
+	}
+}
+
+.bento-hero {
+	grid-area: hero;
+}
+
+.bento-map {
+	grid-area: map;
+}
+
+.bento-read {
+	grid-area: read;
+}
+
+.bento-twitter {
+	grid-area: twitter;
+}
+
+.bento-linkedin {
+	grid-area: linkedin;
+}
+
+.bento-instagram {
+	grid-area: instagram;
+}
+
+.bento-project {
+	grid-area: project;
+}
+
+.bento-empty {
+	grid-area: empty;
 }

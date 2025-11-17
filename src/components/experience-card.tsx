@@ -1,35 +1,37 @@
 import Image from 'next/image'
 import { Check } from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
-import { WorkItem } from '@/utils/types'
+import { ExperienceItem } from '@/utils/types'
 import { FC } from 'react'
 
 type Props = {
-	item: WorkItem
+	item: ExperienceItem
 	className?: string
 }
 
-const WorkCard: FC<Props> = ({ item, className }) => {
-	const { companyName, companyLogo, companyUrl, roles, description, achievements, period } = item
+const ExperienceCard: FC<Props> = ({ item, className }) => {
+	const { title, logo, url, roles, description, achievements, period } = item
+
+	const baseClassName = 'rounded-3xl bg-primary p-4 gap-4 sm:p-5 md:p-6'
 
 	const content = (
 		<>
-			<div className='flex items-center gap-3 mb-4'>
+			<div className='flex items-center gap-3 mb-5'>
 				<Image
-					src={companyLogo}
-					alt={`${companyName} - ${roles.join(', ')} - Arkadiusz Sroczyk`}
-					className='rounded-2xl size-14'
+					src={logo}
+					alt={`${title} - ${roles.join(', ')} - Arkadiusz Sroczyk`}
+					className='rounded-2xl size-14 md:size-16'
 				/>
 				<div>
-					<h3 className='text-lg font-semibold text-balance tracking-[-0.04em] flex items-center gap-2 mb-1.5 leading-tight'>
-						{companyName}
+					<h3 className='text-lg font-semibold text-balance tracking-[-0.04em] flex items-center gap-2 mb-2 leading-tight md:text-xl'>
+						{title}
 					</h3>
 
 					<div className='flex flex-wrap gap-1'>
 						{roles.map((role, index) => (
 							<span
 								key={index}
-								className='bg-primary-800 font-normal text-xs rounded-full px-2 py-0.5 text-white/75'
+								className='bg-primary-800 font-normal text-xs rounded-full px-2 py-0.5 text-white/75 md:text-[13px]'
 							>
 								{role}
 							</span>
@@ -38,10 +40,15 @@ const WorkCard: FC<Props> = ({ item, className }) => {
 				</div>
 			</div>
 
-			{description && <p className='text-white/75 text-[15px] mb-4 text-pretty'>{description}</p>}
+			{description && (
+				<p
+					className='text-white/75 text-sm mb-4 text-pretty md:text-15'
+					dangerouslySetInnerHTML={{ __html: description }}
+				/>
+			)}
 
 			{achievements && achievements.length > 0 && (
-				<ul className='text-white/75 text-sm mb-6 text-pretty space-y-1.5'>
+				<ul className='text-white/75 text-sm mb-7 text-pretty space-y-2 md:text-15'>
 					{achievements.map((achievement, index) => (
 						<li key={index} className='flex items-start gap-2'>
 							<div className='bg-primary-800 rounded-full p-1'>
@@ -53,16 +60,16 @@ const WorkCard: FC<Props> = ({ item, className }) => {
 				</ul>
 			)}
 
-			<p className='font-mono text-white/50 text-xs tracking-wider uppercase'>{period}</p>
+			<p className='font-mono text-white/40 text-[11px] md:text-xs tracking-wider uppercase'>
+				{period}
+			</p>
 		</>
 	)
 
-	const baseClassName = 'rounded-3xl bg-primary p-4 gap-4'
-
-	if (companyUrl) {
+	if (url) {
 		return (
 			<a
-				href={companyUrl}
+				href={url}
 				target='_blank'
 				rel='noreferrer noopener nofollow'
 				className={twMerge(
@@ -79,4 +86,4 @@ const WorkCard: FC<Props> = ({ item, className }) => {
 	return <div className={twMerge(baseClassName, className)}>{content}</div>
 }
 
-export default WorkCard
+export default ExperienceCard

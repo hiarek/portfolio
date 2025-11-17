@@ -1,0 +1,13 @@
+import type { ComponentProps, FC } from 'react'
+
+interface Props extends ComponentProps<'svg'> {}
+
+const PayloadcmsIcon: FC<Props> = (props) => {
+	return (
+		<svg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' fill='currentColor' {...props}>
+			<path d='M11.068 0 22.08 6.625v12.573L13.787 24V11.427L2.769 4.808 11.068 0ZM1.92 18.302l8.31-4.812v9.812l-8.31-5Z' />
+		</svg>
+	)
+}
+
+export default PayloadcmsIcon

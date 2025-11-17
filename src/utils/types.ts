@@ -1,10 +1,10 @@
 import { StaticImageData } from 'next/image'
 
-export interface WorkItem {
+export interface ExperienceItem {
 	id: string
-	companyName: string
-	companyLogo: StaticImageData
-	companyUrl?: string
+	title: string
+	logo: StaticImageData
+	url?: string
 	roles: string[]
 	description?: string
 	achievements?: string[]
