@@ -5,6 +5,7 @@ import mapboxgl, { LngLatLike } from 'mapbox-gl'
 import { MinusIcon, PlusIcon } from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
 import avatar from '@/assets/images/avatar-raw.png'
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 const accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
 const latlng: LngLatLike = [17.03367, 51.11034]
